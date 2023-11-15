@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
@@ -97,6 +99,13 @@ public class BasicController {
     public String condition(Model model) {
         addUsers(model);
         return "basic/condition";
+    }
+
+    @GetMapping("/test")
+    @ResponseBody
+    public String test() throws InterruptedException {
+        Thread.sleep (10000);
+        return "success";
     }
 
     private void addUsers(Model model) {
